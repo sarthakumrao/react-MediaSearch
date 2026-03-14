@@ -13,10 +13,10 @@ function App() {
 
   return (
     <div className="h-screen text-white w-full bg-gray-900">
-      <button className="p-2.5" onClick={getPhotos}>
+      <button className="px-4 py-2 m-5 bg-blue-400" onClick={getPhotos}>
         Get photos
       </button>
-      <button className="p-2.5" onClick={getVideos}>
+      <button className="px-4 py-2 m-5 bg-blue-400" onClick={getVideos}>
         Get Videos
       </button>
     </div>
