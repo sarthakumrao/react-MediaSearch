@@ -1,24 +1,9 @@
-import { fetchPhotos, fetchVideos } from "./api/mediaApi";
+import SearchBar from "./components/SearchBar";
 
 function App() {
-  async function getPhotos() {
-    const data = await fetchPhotos("cat");
-    console.log(data.results);
-  }
-
-  async function getVideos() {
-    const data = await fetchVideos("dog");
-    console.log(data.videos);
-  }
-
   return (
-    <div className="h-screen text-white w-full bg-gray-900">
-      <button className="px-4 py-2 m-5 bg-blue-400" onClick={getPhotos}>
-        Get photos
-      </button>
-      <button className="px-4 py-2 m-5 bg-blue-400" onClick={getVideos}>
-        Get Videos
-      </button>
+    <div className="h-screen text-white w-full bg-gray-950">
+      <SearchBar />
     </div>
   );
 }
