@@ -7,6 +7,7 @@ import {
   setResults,
 } from "../redux/features/searchSlice";
 import { useEffect } from "react";
+import ResultCard from "./ResultCard";
 
 const ResultGrid = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const ResultGrid = () => {
               title: item.alt_description,
               thumbnail: item.urls.small,
               src: item.urls.full,
+              url: item.links.html,
             }));
           } else {
             let res = await fetchVideos(query);
@@ -38,6 +40,7 @@ const ResultGrid = () => {
               title: item.user.name || "video",
               thumbnail: item.image,
               src: item.video_files[0].link,
+              url: item.url,
             }));
           }
           dispatch(setResults(data));
@@ -54,10 +57,13 @@ const ResultGrid = () => {
   if (loading) return <h1>Loading...</h1>;
 
   return (
-    <div>
-      hello
+    <div className="flex flex-wrap justify-between gap-2 overflow-auto px-10">
       {results.map((item, idx) => {
-        return <h1>{item.title}</h1>;
+        return (
+          <div key={idx}>
+            <ResultCard item={item} />
+          </div>
+        );
       })}
     </div>
   );
