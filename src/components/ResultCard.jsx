@@ -1,6 +1,16 @@
-import React from "react";
-
 const ResultCard = (props) => {
+  const addToCollection = (item) => {
+    const oldData = JSON.parse(localStorage.getItem("collection")) || [];
+
+    if (oldData.find((data) => data.id === item.id)) {
+      //skip if data already exists
+    } else {
+      const newData = [...oldData, item];
+      localStorage.setItem("collection", JSON.stringify(newData));
+    }
+    console.log(localStorage.getItem("collection"));
+  };
+
   return (
     <div className="w-[18vw] h-60 relative bg-white rounded-2xl overflow-hidden">
       <a target="_blank" className="h-full" href={props.item.url}>
@@ -34,7 +44,12 @@ const ResultCard = (props) => {
         <h2 className="text-xs font-semibold capitalize h-12 overflow-hidden">
           {props.item.title}
         </h2>
-        <button className="bg-indigo-700 cursor-pointer active:scale-95 text-white rounded-2xl px-3 py-2 font-medium">
+        <button
+          onClick={() => {
+            addToCollection(props.item);
+          }}
+          className="bg-indigo-700 cursor-pointer active:scale-95 text-white rounded-2xl px-3 py-2 font-medium"
+        >
           Save
         </button>
       </div>
