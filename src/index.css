@@ -3,3 +3,11 @@
 #bottom {
     background: linear-gradient(transparent);
 }
+
+:root{
+    --c1:rgb(12, 44, 85);
+    --c2: rgb(41, 99, 116);
+    --c3: rgb(98, 159, 173);
+    --c4: rgb(237, 237, 206);
+
+}

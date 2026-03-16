@@ -17,7 +17,7 @@ const SearchBar = () => {
         onSubmit={(e) => {
           submitHandler(e);
         }}
-        className="flex gap-5 p-10 bg-gray-900"
+        className="flex gap-5 p-10 bg-(--c2)"
       >
         <input
           value={text}
