@@ -1,18 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast, Zoom } from "react-toastify";
 
-const initialState = {
-  items: JSON.parse(localStorage.getItem("collection")) || [],
-};
-
 const collectionSlice = createSlice({
   name: "collection",
-  initialState,
+  initialState: {
+    items: JSON.parse(localStorage.getItem("collection")) || [],
+  },
   reducers: {
     addCollection: (state, action) => {
-      const alreadyExists = state.items.find((item) => {
-        item.id == action.payload.id;
-      });
+      const alreadyExists = state.items.find(
+        (item) => item.id === action.payload.id,
+      );
       if (!alreadyExists) {
         state.items.push(action.payload);
         localStorage.setItem("collection", JSON.stringify(state.items));
