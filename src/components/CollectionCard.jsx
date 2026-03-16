@@ -1,6 +1,11 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import { removeCollection } from "../redux/features/collectionSlice";
 
 const CollectionCard = (props) => {
+  const dispatch = useDispatch();
+  const remove = (data) => {
+    dispatch(removeCollection(data));
+  };
   return (
     <div className="w-[18vw] h-60 relative bg-white rounded-2xl overflow-hidden">
       <a target="_blank" className="h-full" href={props.item.url}>
@@ -36,7 +41,7 @@ const CollectionCard = (props) => {
         </h2>
         <button
           onClick={() => {
-            console.log("here...");
+            remove(props.item);
           }}
           className="bg-rose-700 cursor-pointer active:scale-95 text-white rounded-2xl px-2 py-1 font-medium size-fit"
         >
