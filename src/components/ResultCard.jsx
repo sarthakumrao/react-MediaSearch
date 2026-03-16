@@ -1,14 +1,11 @@
-const ResultCard = (props) => {
-  const addToCollection = (item) => {
-    const oldData = JSON.parse(localStorage.getItem("collection")) || [];
+import { useDispatch } from "react-redux";
+import { addCollection } from "../redux/features/collectionSlice";
 
-    if (oldData.find((data) => data.id === item.id)) {
-      //skip if data already exists
-    } else {
-      const newData = [...oldData, item];
-      localStorage.setItem("collection", JSON.stringify(newData));
-    }
-    console.log(localStorage.getItem("collection"));
+const ResultCard = (props) => {
+  const dispatch = useDispatch();
+
+  const addToCollection = (item) => {
+    dispatch(addCollection(item));
   };
 
   return (
